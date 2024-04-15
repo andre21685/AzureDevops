@@ -1,20 +1,18 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+  branches:
+    include:
+      - main 
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: TeamsMessage
+- script: echo "Executar a tarefa de build e teste"
+  displayName: 'Build e Teste'
+
+- task: teams-notify@1
   inputs:
-    teamsUrl: 'https://softinsacorp.webhook.office.com/webhookb2/7c17176c-7310-401b-93ea-716c160aca76@39c83d5e-cede-42d1-962f-c6a853ab7cf5/IncomingWebhook/e56d4a6b14294077b1eea040023a49c3/3c50c786-4cff-4450-a476-a4606fc6a082'
-    message: 'Iniciar a pipeline.....'
-    title: 'Mensagem para o teams'
-    summary: 'A pipeline está a ser executada'
+    teamsWebhookUrl: 'https://softinsacorp.webhook.office.com/webhookb2/7c17176c-7310-401b-93ea-716c160aca76@39c83d5e-cede-42d1-962f-c6a853ab7cf5/IncomingWebhook/47f8d7cbc8564a30a25904121f6e7f62/3c50c786-4cff-4450-a476-a4606fc6a082'
+    message: 'Vou te enviar alguns documentos.'
 
 
